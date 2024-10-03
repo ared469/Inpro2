@@ -29,20 +29,18 @@ ${objective}
     `;
 
     // Send LaTeX content to server
-    fetch('/generate-cv', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({ latex })
-    })
-    .then(response => response.blob())
-    .then(blob => {
-        // Download the PDF
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = 'cv.pdf';
-        link.click();
-    })
-    .catch(error => console.error('Error:', error));
-});
+fetch('/generate-cv', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({ latex })
+})
+.then(response => response.blob())
+.then(blob => {
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = 'cv.pdf';
+    link.click();
+})
+.catch(error => console.error('Error:', error));
