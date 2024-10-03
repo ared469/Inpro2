@@ -1,3 +1,4 @@
+% !TEX TS-program = latex
 document.getElementById("cvForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -25,24 +26,13 @@ document.getElementById("cvForm").addEventListener("submit", function(event) {
 \\section*{Objective}
 ${objective}
 
+% Add more sections here for Work Experience, Education, Skills, etc.
+
 \\end{document}
     `;
 
-    // Send LaTeX content to server
-    fetch('/generate-cv', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({ latex })
-    })
-    .then(response => response.blob())
-    .then(blob => {
-        // Download the PDF
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = 'cv.pdf';
-        link.click();
-    })
-    .catch(error => console.error('Error:', error));
+    // Display the generated LaTeX in the HTML page
+    document.getElementById("latexOutput").textContent = latex;
+
+    // Optional: send the LaTeX string to a backend server to compile it into a PDF
 });

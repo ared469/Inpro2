@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator</title>
+</head>
+<body>
+    <h1>Custom CV Generator</h1>
+    <form id="cvForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required><br><br>
+
+        <label for="linkedin">LinkedIn Profile:</label>
+        <input type="url" id="linkedin" name="linkedin" required><br><br>
+
+        <label for="objective">Objective:</label><br>
+        <textarea id="objective" name="objective" rows="4" cols="50"></textarea><br><br>
+
+        <!-- Add more fields like Work Experience, Education, Skills, etc. -->
+
+        <input type="submit" value="Generate CV">
+    </form>
+
+    <pre id="latexOutput"></pre>
+
+    <script src="cv.js"></script>
+</body>
+</html>
